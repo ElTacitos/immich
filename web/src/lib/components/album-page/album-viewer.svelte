@@ -64,9 +64,13 @@
   {:else}
     <ControlAppBar showBackButton={false}>
       <svelte:fragment slot="leading">
+        {#if sharedLink}
+          <ImmichLogo class="h-15 w-35" />
+        {:else}
         <a data-sveltekit-preload-data="hover" class="ml-4" href="/">
-          <ImmichLogo class="h-10" />
+          <ImmichLogo class="h-15 w-35" />
         </a>
+        {/if}
       </svelte:fragment>
 
       <svelte:fragment slot="trailing">
@@ -81,8 +85,6 @@
         {#if album.assetCount > 0 && sharedLink.allowDownload}
           <CircleIconButton title="Download" on:click={() => downloadAlbum(album)} icon={mdiFolderDownloadOutline} />
         {/if}
-
-        <ThemeButton />
       </svelte:fragment>
     </ControlAppBar>
   {/if}
@@ -90,10 +92,10 @@
 
 <main class="relative h-screen overflow-hidden bg-immich-bg px-6 pt-[var(--navbar-height)] dark:bg-immich-dark-bg">
   <AssetGrid {album} {assetStore} {assetInteractionStore}>
-    <section class="pt-24">
+    <section class="pt-5">
       <!-- ALBUM TITLE -->
       <h1
-        class="bg-immich-bg text-6xl text-immich-primary outline-none transition-all dark:bg-immich-dark-bg dark:text-immich-dark-primary"
+        class="bg-immich-bg text-4xl text-immich-primary outline-none transition-all dark:bg-immich-dark-bg dark:text-immich-dark-primary"
       >
         {album.albumName}
       </h1>

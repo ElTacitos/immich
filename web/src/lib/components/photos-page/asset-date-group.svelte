@@ -115,49 +115,10 @@
   };
 </script>
 
-<section id="asset-group-by-date" class="flex flex-wrap gap-x-12" bind:clientHeight={actualBucketHeight}>
+<section id="asset-group-by-date" class="flex flex-wrap gap-x-12 gap-y-0.5" bind:clientHeight={actualBucketHeight}>
   {#each assetsGroupByDate as groupAssets, groupIndex (groupAssets[0].id)}
     {@const asset = groupAssets[0]}
     {@const groupTitle = formatGroupTitle(fromLocalDateTime(asset.localDateTime).startOf('day'))}
-    <!-- Asset Group By Date -->
-
-    <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div
-      class="flex flex-col"
-      on:mouseenter={() => {
-        isMouseOverGroup = true;
-        assetMouseEventHandler(groupTitle, null);
-      }}
-      on:mouseleave={() => {
-        isMouseOverGroup = false;
-        assetMouseEventHandler(groupTitle, null);
-      }}
-    >
-      <!-- Date group title -->
-      <div
-        class="flex z-[100] sticky top-0 pt-7 pb-5 h-6 place-items-center text-xs font-medium text-immich-fg bg-immich-bg dark:bg-immich-dark-bg dark:text-immich-dark-fg md:text-sm"
-        style="width: {geometry[groupIndex].containerWidth}px"
-      >
-        {#if !singleSelect && ((hoveredDateGroup == groupTitle && isMouseOverGroup) || $selectedGroup.has(groupTitle))}
-          <div
-            transition:fly={{ x: -24, duration: 200, opacity: 0.5 }}
-            class="inline-block px-2 hover:cursor-pointer"
-            on:click={() => handleSelectGroup(groupTitle, groupAssets)}
-            on:keydown={() => handleSelectGroup(groupTitle, groupAssets)}
-          >
-            {#if $selectedGroup.has(groupTitle)}
-              <Icon path={mdiCheckCircle} size="24" color="#4250af" />
-            {:else}
-              <Icon path={mdiCircleOutline} size="24" color="#757575" />
-            {/if}
-          </div>
-        {/if}
-
-        <span class="truncate first-letter:capitalize" title={groupTitle}>
-          {groupTitle}
-        </span>
-      </div>
-
       <!-- Image grid -->
       <div
         class="relative"
@@ -186,7 +147,6 @@
           </div>
         {/each}
       </div>
-    </div>
   {/each}
 </section>
 

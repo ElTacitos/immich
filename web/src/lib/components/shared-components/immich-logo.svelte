@@ -1,6 +1,6 @@
 <script lang="ts">
-  import logoDarkUrl from '$lib/assets/immich-logo-inline-dark.svg';
-  import logoLightUrl from '$lib/assets/immich-logo-inline-light.svg';
+  import logoDarkUrl from '$lib/assets/pingouin-teufeur-dark.png';
+  import logoLightUrl from '$lib/assets/pingouin-teufeur-light.png';
   import logoNoText from '$lib/assets/immich-logo.svg';
   import { content as alternativeLogo } from '$lib/assets/immich-logo.json';
   import { Theme } from '$lib/constants';
